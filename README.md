@@ -5,7 +5,7 @@ A Python tool for comparing LLM-based causal reasoning against data-driven causa
 ## Prerequisites
 
 - **Docker** and **Docker Compose** installed
-- **OpenAI API key** (GPT-4 or GPT-5 access)
+- **OpenAI API key** (Optional)
 
 ## Quick Start
 
