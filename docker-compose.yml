@@ -1,0 +1,40 @@
+# docker-compose.yml
+
+services:
+  causal-app:
+    build: .
+    ports:
+      - "8501:8501"  # Streamlit
+      - "8000:8000"  # FastAPI
+    volumes:
+      # - .:/app 
+      - ollama-data:/ollama
+    environment:
+      - PYTHONPATH=/app
+      - OLLAMA_HOST=ollama:11434
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_DAILY_LIMIT=${OPENAI_DAILY_LIMIT:-5.0}
+    env_file:
+      - .env
+    depends_on:
+      - ollama
+    networks:
+      - causal-network
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    networks:
+      - causal-network
+
+volumes:
+  ollama-data:
+
+networks:
+  causal-network:
+    driver: bridge

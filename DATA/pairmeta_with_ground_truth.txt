@@ -1,0 +1,102 @@
+# Pairmeta Format with Ground Truth for Regime-Dependent Causal Discovery
+# Format: dataset_name|cause_start cause_end|effect_start effect_end|weight|threshold_variable|threshold_value|regime_low_direction|regime_high_direction
+# Directions: 1 = X->Y (cause->effect), -1 = Y->X (effect->cause)
+# Regime Low: values <= threshold_value, Regime High: values > threshold_value
+#
+# Example: auto_mpg_horsepower|1 1|2 2|1|horsepower|140.0|-1|1
+# Means: Column 1 (horsepower) vs Column 2 (mpg), weight=1, threshold at 140 HP (midpoint of 120-160 HP transition region)
+#        Below 140 HP: MPG->HP (consumer-driven: fuel efficiency drives design choices, direction=-1)
+#        Above 140 HP: HP->MPG (engineering-driven: power drives consumption, direction=1)
+# Source: UCI Auto MPG dataset (1983 ASA Exposition, StatLib)
+
+# Automotive
+auto_mpg_horsepower|1 1|2 2|1|horsepower|140.0|-1|1
+Auto Mpg Horsepower|1 1|2 2|1|horsepower|140.0|-1|1
+
+# Energy & Environment - Renewable Energy vs Emissions
+emissions_total_per_capita_renewable_share_of_electricity__pct|1 1|2 2|1|renewable_share_of_electricity__pct|15.0|1|-1
+Emissions Total Per Capita Renewable Share Of Electricity  Pct|1 1|2 2|1|renewable_share_of_electricity__pct|15.0|1|-1
+
+
+# Economics - UK Interest Rates
+# Column 1 (InterestShortUK) vs Column 2 (InterestLongUK), threshold at 3.5% short-term rate (midpoint of 3-4% transition)
+# Below 3.5% short-term: Short->Long (normal cycles: central bank policy drives long-term rates, direction=1)
+# Above 3.5% short-term: Long->Short (recession fears: market expectations of future cuts, direction=-1)
+# Transition region (3-4%): yield curve flattens/inverts, causal interpretation flips
+interestshortuk_interestlonguk|1 1|2 2|1|InterestShortUK|3.5|1|-1
+Interestshortuk Interestlonguk|1 1|2 2|1|InterestShortUK|3.5|1|-1
+
+# Economics - US Interest Rate & Inflation (Federal Reserve, 1958-2017)
+# Column 1 (Effective_Federal_Funds_Rate) vs Column 2 (Inflation_Rate), threshold at 5.4% inflation (midpoint of 5.3-5.5%)
+# Below 5.4% inflation: Inflation->Interest_Rate (reaction-driven: monetary policy responds to inflation, direction=-1)
+# Above 5.4% inflation: Interest_Rate->Inflation (policy-driven: aggressive policy controls inflation, direction=1)
+# Transition region (5.3-5.5%): documented causal shift where policy effectiveness changes
+interest_inflation|1 1|2 2|1|Inflation_Rate|5.4|-1|1
+Interest Inflation|1 1|2 2|1|Inflation_Rate|5.4|-1|1
+effective_federal_funds_rate_inflation_rate|1 1|2 2|1|Inflation_Rate|5.4|-1|1
+Effective Federal Funds Rate Inflation Rate|1 1|2 2|1|Inflation_Rate|5.4|-1|1
+
+# Health & Wellness - Stress & Fatigue (Synthetic)
+# Column 1 (FatigueLevel) vs Column 2 (StressLevel), threshold at 0.5 stress level
+# Below 0.5 stress: FatigueLevel->StressLevel (fatigue causes stress with negative relationship, direction=1)
+# Above 0.5 stress: StressLevel->FatigueLevel (stress causes fatigue with positive relationship, direction=-1)
+# Synthetic data demonstrating regime-switching causality
+synthetic_stress_fatigue|1 1|2 2|1|StressLevel|0.5|1|-1
+Synthetic Stress Fatigue|1 1|2 2|1|StressLevel|0.5|1|-1
+
+# COMMENTED OUT - Not in custom_pairs directory yet
+# # Health & Wellness (FABRICATED FOR TESTING)
+# water_hydration_cleaned|1 1|2 2|1|WaterIntake_L|2.0|1|-1
+# Water Hydration Cleaned|1 1|2 2|1|WaterIntake_L|2.0|1|-1
+# 
+# # Economics - Monetary Policy
+# interest_inflation|1 1|2 2|1|Inflation_Rate|5.5|-1|1
+# Interest Inflation|1 1|2 2|1|Inflation_Rate|5.5|-1|1
+# 
+# # Economics - Development
+# gdp_unemployment_cleaned|1 1|2 2|1|GDP_per_capita|30000|1|-1
+# Gdp Unemployment Cleaned|1 1|2 2|1|GDP_per_capita|30000|1|-1
+# gdp_energy|1 1|2 2|1|GDP_per_capita|25000|1|-1
+# Gdp Energy|1 1|2 2|1|GDP_per_capita|25000|1|-1
+# 
+# # Social - Education & Poverty
+# education_poverty_cleaned|1 1|2 2|1|Literacy_Rate|85.0|1|-1
+# Education Poverty Cleaned|1 1|2 2|1|Literacy_Rate|85.0|1|-1
+# 
+# # Renewable Energy
+# renewable_energy_cleaned|1 1|2 2|1|Renewable_Energy_Consumption|30.0|-1|1
+# Renewable Energy Cleaned|1 1|2 2|1|Renewable_Energy_Consumption|30.0|-1|1
+# 
+# # Consumer Behavior
+# rating_sales_cleaned|1 1|2 2|1|Rating|3.5|1|-1
+# Rating Sales Cleaned|1 1|2 2|1|Rating|3.5|1|-1
+# 
+# # Urban Planning
+# traffic_transit_cleaned|1 1|2 2|1|Public_Transit_Usage|40.0|-1|1
+# Traffic Transit Cleaned|1 1|2 2|1|Public_Transit_Usage|40.0|-1|1
+# 
+# # Social Media & Health
+# social_media_sleep_cleaned|1 1|2 2|1|Social_Media_Hours|4.0|1|-1
+# Social Media Sleep Cleaned|1 1|2 2|1|Social_Media_Hours|4.0|1|-1
+# 
+# # Agriculture - Synthetic Data
+# synthetic_corn_moisture_massflow|1 1|2 2|1|Moisture|25.0|1|-1
+# Synthetic Corn Moisture Massflow|1 1|2 2|1|Moisture|25.0|1|-1
+# 
+# # Environmental - Ozone-Temperature (Tübingen pairs)
+# tuebingen_pair0049_ozone_temperature|2 2|1 1|0.333|Temperature|25.0|1|-1
+# Tuebingen Pair0049 Ozone Temperature|2 2|1 1|0.333|Temperature|25.0|1|-1
+# tuebingen_pair0050_ozone_temperature|2 2|1 1|0.333|Temperature|25.0|1|-1
+# Tuebingen Pair0050 Ozone Temperature|2 2|1 1|0.333|Temperature|25.0|1|-1
+# tuebingen_pair0051_ozone_temperature|2 2|1 1|0.334|Temperature|25.0|1|-1
+# Tuebingen Pair0051 Ozone Temperature|2 2|1 1|0.334|Temperature|25.0|1|-1
+# synthetic_ozone_temperature|2 2|1 1|1|Temperature|25.0|1|-1
+# Synthetic Ozone Temperature|2 2|1 1|1|Temperature|25.0|1|-1
+# 
+# # Environmental - Radiation-Temperature
+# tuebingen_pair0077_radiation_temperature|2 2|1 1|1|Radiation|300.0|1|-1
+# Tuebingen Pair0077 Radiation Temperature|2 2|1 1|1|Radiation|300.0|1|-1
+# 
+# # Environmental - Temperature-Snow
+# tuebingen_pair0087_temperature_snow|1 1|2 2|1|Temperature|0.0|1|-1
+# Tuebingen Pair0087 Temperature Snow|1 1|2 2|1|Temperature|0.0|1|-1
