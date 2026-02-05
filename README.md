@@ -74,6 +74,16 @@ The tool supports 4 experimental configurations:
 | `OPENAI_API_KEY` | Yes | Your OpenAI API key |
 | `OPENAI_DAILY_LIMIT` | No | Daily spending limit in USD (default: 5.0) |
 
+## Acknowledgments
+
+This tool implements and compares three state-of-the-art causal discovery algorithms for heteroscedastic noise models:
+
+- **LOCI** (Location-Scale Noise Models) - [Immer et al., 2023](https://github.com/AlexImmer/loci)
+- **ROCHE** (Robust Estimation with Student's t-distribution) - [Tran et al., 2023](https://github.com/quangdzuytran/ROCHE)
+- **LCUBE** (MDL-based approach with cubic splines) - [Hlavackova-Schindler & Marsela, 2025](https://github.com/suzi216/LCUBE)
+
+Please refer to their original repositories for implementation details and cite their work if you use these algorithms.
+
 ## License
 
 This tool accompanies the paper submission for academic review.
