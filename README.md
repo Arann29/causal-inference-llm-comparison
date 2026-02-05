@@ -1,6 +1,6 @@
 # Causal Inference Explorer
 
-A Python tool for comparing LLM-based causal reasoning against data-driven causal discovery algorithms (ROCHE, LOCI, LCUBE) on regime-dependent bivariate datasets.
+A Python tool for comparing LLM-based causal reasoning against data-driven bivariate causal discovery algorithms (ROCHE  LOCI, LCUBE) on data with regime-dependent causal directions.
 
 ## Prerequisites
 
