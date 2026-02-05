@@ -74,9 +74,9 @@ The tool supports 4 experimental configurations:
 | `OPENAI_API_KEY` | Yes | Your OpenAI API key |
 | `OPENAI_DAILY_LIMIT` | No | Daily spending limit in USD (default: 5.0) |
 
-## Acknowledgments
+## Source Links for Data-Driven Causal Methods
 
-This tool implements and compares three state-of-the-art causal discovery algorithms for heteroscedastic noise models:
+This tool uses for comparison three state-of-the-art causal discovery algorithms for additive noise models:
 
 - **LOCI** (Location-Scale Noise Models) - [Immer et al., 2023](https://github.com/AlexImmer/loci)
 - **ROCHE** (Robust Estimation with Student's t-distribution) - [Tran et al., 2023](https://github.com/quangdzuytran/ROCHE)
